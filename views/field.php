@@ -12,7 +12,7 @@
       }
     });
   };
-  <?php if($disable_form_submission === 'yes'): ?>
+  <?php if($prevent_form_submission === 'yes'): ?>
   (function($) {
     $('#<?=$id?>').closest('form').on('submit', function(e) {
       if($('#<?=$id?>').attr('data-validated') == 'false') {

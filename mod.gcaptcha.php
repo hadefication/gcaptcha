@@ -18,7 +18,7 @@ class Gcaptcha {
     $vars['action_id'] = ee()->functions->fetch_action_id('Gcaptcha', 'site_verify');
     $vars['id'] = ee()->TMPL->fetch_param('id', 'gcaptcha');
     $vars['class'] = ee()->TMPL->fetch_param('class');
-    $vars['disable_form_submission'] = ee()->TMPL->fetch_param('disable_form_submission', 'yes');
+    $vars['prevent_form_submission'] = ee()->TMPL->fetch_param('prevent_form_submission', 'yes');
 
     return ee()->load->view('field', $vars, TRUE);
   }
