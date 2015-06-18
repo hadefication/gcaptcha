@@ -19,7 +19,6 @@ class Gcaptcha_mcp {
 
     $vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=gcaptcha'.AMP.'method=save';
     $vars['form_hidden'] = NULL;
-    $vars['gcaptcha_settings'] = $gcaptcha_settings;
     $vars['gcaptcha_settings'] = ($gcaptcha_settings->num_rows() > 0) ? $gcaptcha_settings->result_object()[0] : array();
 
     return ee()->load->view('index', $vars, TRUE);
@@ -58,7 +57,6 @@ class Gcaptcha_mcp {
         } else {
           ee()->session->set_flashdata('message_error', lang('save_error'));
         }
-        exit('edit');
       } else {
         ee()->db->insert(
           'gcaptcha_settings',
