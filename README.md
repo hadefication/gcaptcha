@@ -15,19 +15,19 @@ Just another Google reCAPTCHA add-on for custom Expression Engine forms.
 3. [Google reCAPTCHA](https://www.google.com/recaptcha/admin) keys.
 
 ## Showing the reCAPTCHA
-Use **{exp:gcaptcha:field}** tag to show the reCAPTCHA field. Below are the tag params:
+Use <code>{exp:gcaptcha:field}</code> tag to show the reCAPTCHA field. Below are the tag params:
 
 - <code>id</code> = the selector id of the field. Defaults to **gcaptcha**.
 - <code>class</code> = class that you want to add to the field element.
 
 ## How it works
-Just add the tag (**{exp:gcaptcha:field}**) to your form and you are good to go. The tag will inject a jQuery script that prevents the form to be submitted if the reCAPTCHA field is not yet validated.
+Just add the tag <code>{exp:gcaptcha:field}</code> to your form and you are good to go. The tag will inject a jQuery script that prevents the form to be submitted if the reCAPTCHA field is not yet validated.
 
 The field will also trigger an event whenever the form is validated. Just listen to **validated** event via **id** selector, example:
 <pre>
   jQuery('#gcaptcha').on('validated', function(event) {
-    // Custom args here...
-    // event.result - is the result data if the field is validated (tru/false) or not
+    // Your awesome code here...
+    // event.success - true/false, reCAPTCHA validation response from google
   });
 </pre>
 

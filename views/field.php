@@ -12,7 +12,7 @@
       }
     });
   };
-
+  <?php if($disable_form_submission === 'yes'): ?>
   (function($) {
     $('#<?=$id?>').closest('form').on('submit', function(e) {
       if($('#<?=$id?>').attr('data-validated') == 'false') {
@@ -20,5 +20,6 @@
       }
     });
   })(jQuery);
+  <?php endif; ?>
 </script>
 <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
