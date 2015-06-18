@@ -2,17 +2,21 @@
 
 Just another Google reCAPTCHA add-on for custom Expression Engine forms.
 
-## Installation
-1. Download the add-on [add-on](https://github.com/hadefication/gcaptcha/archive/master.zip).
-2. Extract the contents.
-3. Copy/Move contents (gcaptcha folder) to system/expressionengine/third_party.
-4. Login to EE CPanel (Add-Ons > Module > Gcaptcha) and enable/install the add-on.
-5. Enjoy.
-
 ## Requirements
 1. Expression Engine
 2. jQuery
 3. [Google reCAPTCHA](https://www.google.com/recaptcha/admin) keys.
+
+## Installation
+1. Download the add-on [add-on](https://github.com/hadefication/gcaptcha/archive/master.zip).
+2. Extract the contents.
+3. Copy/Move contents (gcaptcha folder) to system/expressionengine/third_party.
+4. Login to EE CPanel (Add-Ons > Module > Gcaptcha) and install the add-on.
+
+## Setting up the keys
+1. Login to EE CPanel and navigate to Add-Ons > Module and click on Gcaptcha module. This will redirect you to the settings page.
+2. In the settings page enter the <code>Site Key</code> and <code>Secret Key</code> which can be obtained [here](https://www.google.com/recaptcha/admin)
+3. And save changes.
 
 ## Showing the reCAPTCHA
 Use <code>{exp:gcaptcha:field}</code> tag to show the reCAPTCHA field. Below are the tag params:

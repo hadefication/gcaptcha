@@ -32,6 +32,8 @@ class Gcaptcha_mcp {
     ee()->load->library('form_validation');
     ee()->form_validation->set_rules('site_key', 'lang:site_key_required', 'required');
     ee()->form_validation->set_rules('secret_key', 'lang:secret_key_required', 'required');
+    $gs = ee()->db->select('*')->from('gcaptcha_settings')->limit(1)->get();
+    $gs = ($gs->num_rows() > 0) ? $gs->result_object()[0] : array();
 
     if(ee()->form_validation->run()==FALSE) {
       ee()->session->set_flashdata('message_error', ee()->form_validation->error_string());
@@ -55,7 +57,11 @@ class Gcaptcha_mcp {
         if(ee()->db->affected_rows()) {
           ee()->session->set_flashdata('message_success', lang('changes_saved'));
         } else {
-          ee()->session->set_flashdata('message_error', lang('save_error'));
+          if(!empty($gs) && $gs->site_key === $site_key && $gs->secret_key === $secret_key) {
+            ee()->session->set_flashdata('message_success', lang('changes_saved'));
+          } else {
+            ee()->session->set_flashdata('message_error', lang('save_error').ee()->db->affected_rows());
+          }
         }
       } else {
         ee()->db->insert(
