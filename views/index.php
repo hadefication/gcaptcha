@@ -23,11 +23,8 @@
 </style>
 
 <p>
-  To obtain the necessary keys, please visit <a href="http://www.google.com/recaptcha/admin">Google reCaptcha</a> and follow the steps provided.
+  To obtain the necessary keys, please visit <a href="http://www.google.com/recaptcha/admin">Google reCaptcha</a> and follow the steps provided. Click <a href="https://github.com/hadefication/gcaptcha">here</a> for usage and documentation.
 </p>
-<pre>
-  <?php print_r($gcaptcha_settings); ?>
-</pre>
 
 <?=form_open($action_url, '', $form_hidden)?>
 
