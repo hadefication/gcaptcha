@@ -37,3 +37,6 @@ The field will also trigger an event whenever the form is validated. Just listen
 </pre>
 
 The field also has an attribute named **data-validated** where it is false by default and will change to true once the field is validated.
+
+## Support and stuffs
+For issues, please submit a ticket [here](https://github.com/hadefication/gcaptcha/issues) or email me at hadefication@gmail.com.
