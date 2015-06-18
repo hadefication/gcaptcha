@@ -13,8 +13,8 @@ class Gcaptcha {
     $vars = array();
     ee()->load->dbforge();
 
-    $gcaptcha_settings = ee()->db->select('*')->from('gcaptcha_settings')->limit(1)->get();
-    $vars['settings'] = ($gcaptcha_settings->num_rows() > 0) ? $gcaptcha_settings->result_object()[0] : array();
+    $gcaptcha_settings = ee()->db->limit(1)->get('gcaptcha_settings')->first_row();
+    $vars['settings'] = $gcaptcha_settings;
     $vars['action_id'] = ee()->functions->fetch_action_id('Gcaptcha', 'site_verify');
     $vars['id'] = ee()->TMPL->fetch_param('id', 'gcaptcha');
     $vars['class'] = ee()->TMPL->fetch_param('class');
@@ -25,8 +25,7 @@ class Gcaptcha {
 
   function site_verify() {
     ee()->load->dbforge();
-    $gcaptcha_settings = ee()->db->select('*')->from('gcaptcha_settings')->limit(1)->get();
-    $gcaptcha_settings = ($gcaptcha_settings->num_rows() > 0) ? $gcaptcha_settings->result_object()[0] : array();
+    $gcaptcha_settings = ee()->db->limit(1)->get('gcaptcha_settings')->first_row();
     $response = ee()->input->post('response', TRUE);
     $url = $this->google_url."?secret=".$gcaptcha_settings->secret_key."&response=".$response;
 

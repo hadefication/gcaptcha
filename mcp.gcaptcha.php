@@ -13,13 +13,13 @@ class Gcaptcha_mcp {
     ee()->load->helper('form');
     ee()->load->dbforge();
 
-    $gcaptcha_settings = ee()->db->select('*')->from('gcaptcha_settings')->limit(1)->get();
+    $gcaptcha_settings = ee()->db->limit(1)->get('gcaptcha_settings')->first_row();
 
     ee()->view->cp_page_title = lang('gcaptcha_module_page_title');
 
     $vars['action_url'] = 'C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=gcaptcha'.AMP.'method=save';
     $vars['form_hidden'] = NULL;
-    $vars['gcaptcha_settings'] = ($gcaptcha_settings->num_rows() > 0) ? $gcaptcha_settings->result_object()[0] : array();
+    $vars['gcaptcha_settings'] = $gcaptcha_settings;
 
     return ee()->load->view('index', $vars, TRUE);
   }
@@ -32,8 +32,7 @@ class Gcaptcha_mcp {
     ee()->load->library('form_validation');
     ee()->form_validation->set_rules('site_key', 'lang:site_key_required', 'required');
     ee()->form_validation->set_rules('secret_key', 'lang:secret_key_required', 'required');
-    $gs = ee()->db->select('*')->from('gcaptcha_settings')->limit(1)->get();
-    $gs = ($gs->num_rows() > 0) ? $gs->result_object()[0] : array();
+    $gs = ee()->db->limit(1)->get('gcaptcha_settings')->first_row();
 
     if(ee()->form_validation->run()==FALSE) {
       ee()->session->set_flashdata('message_error', ee()->form_validation->error_string());
